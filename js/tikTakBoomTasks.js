@@ -58,7 +58,7 @@ const tasks = `
             "answer5": { "result": false, "value": "Онтарио" }
         },
         {
-            "question": "Как переводится фраза "Акуна Матата"?",
+            "question": "Как переводится фраза Акуна Матата?",
             "answer1": { "result": true, "value": "Без забот" },
             "answer2": { "result": false, "value": "Не сдавайся" },
             "answer3": { "result": false, "value": "Забудь о прошлом" },
@@ -143,8 +143,7 @@ const tasks = `
             "answer2": { "result": false, "value": "Вывод ошибки в консоль"},
             "answer3": { "result": false, "value": "Окончание работы программы"},
             "answer4": { "result": false, "value": "Исключение в коде"},
-            "answer5": { "result": false, "value": "Процесс отладки"},
-            "answer6": { "result": false, "value": "Начало работы программы"}
+            "answer5": { "result": false, "value": "Процесс отладки"}
         },
         {
             "question": "Как вывести системное окно с полем для ввода значения?",
@@ -152,9 +151,9 @@ const tasks = `
             "answer2": { "result": false, "value": "confirm()"},
             "answer3": { "result": false, "value": "alert()"},
             "answer4": { "result": false, "value": "input()"},
-            "answer5": { "result": false, "value": "slice()"},
-            "answer6": { "result": false, "value": "push()"}
-        },    
+            "answer5": { "result": false, "value": "slice()"}
+        },
+        {    
             "question": "Какой цикл в JavaScript проверяет условие после каждой итерации?",
             "answer1": { "result": true, "value": "do...while" },
             "answer2": { "result": false, "value": "while...until" },
@@ -265,6 +264,6 @@ const tasks = `
             "answer3": { "result": false, "value": "Слон" },
             "answer4": { "result": false, "value": "Медведь" },
             "answer5": { "result": false, "value": "Ягуар" }
-        },
+        }
     ]
 `;

@@ -5,7 +5,10 @@ tikTakBoom = {
         gameStatusField,
         textFieldQuestion,
         textFieldAnswer1,
-        textFieldAnswer2
+        textFieldAnswer2,
+        textFieldAnswer3, 
+        textFieldAnswer4,
+        textFieldAnswer5
     ) {
         this.boomTimer = 30;
         this.countOfPlayers = 2;
@@ -16,6 +19,9 @@ tikTakBoom = {
         this.textFieldQuestion = textFieldQuestion;
         this.textFieldAnswer1 = textFieldAnswer1;
         this.textFieldAnswer2 = textFieldAnswer2;
+        this.textFieldAnswer3 = textFieldAnswer3;
+        this.textFieldAnswer4 = textFieldAnswer4;
+        this.textFieldAnswer5 = textFieldAnswer5;
 
         this.needRightAnswers = 3;
     },
@@ -66,9 +72,15 @@ tikTakBoom = {
         this.textFieldQuestion.innerText = task.question;
         this.textFieldAnswer1.innerText = task.answer1.value;
         this.textFieldAnswer2.innerText = task.answer2.value;
+        this.textFieldAnswer3.innerText = task.answer3.value;
+        this.textFieldAnswer4.innerText = task.answer4.value;
+        this.textFieldAnswer5.innerText = task.answer5.value;
 
         this.textFieldAnswer1.addEventListener('click', answer1 = () => this.turnOff('answer1'));
         this.textFieldAnswer2.addEventListener('click', answer2 = () => this.turnOff('answer2'));
+        this.textFieldAnswer3.addEventListener('click', answer3 = () => this.turnOff('answer3'));
+        this.textFieldAnswer4.addEventListener('click', answer4 = () => this.turnOff('answer4'));
+        this.textFieldAnswer5.addEventListener('click', answer5 = () => this.turnOff('answer5'));
 
         this.currentTask = task;
     },

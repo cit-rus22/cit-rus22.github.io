@@ -4,137 +4,137 @@ const tasks = `
         {
             "question": "2 * 2 = ",
             "answer1": { "result": true, "value": "4" },
-            "answer2": { "result": false, "value": "5" }
-            "answer3": { "result": false, "value": "6" }
-            "answer4": { "result": false, "value": "7" }
+            "answer2": { "result": false, "value": "5" },
+            "answer3": { "result": false, "value": "6" },
+            "answer4": { "result": false, "value": "7" },
             "answer5": { "result": false, "value": "8" }
         },
         {
             "question": "Как зовут крокодила, лучшего друга Чебурашки?",
             "answer1": { "result": false, "value": "Данди" },
-            "answer2": { "result": true, "value": "Гена" }
-            "answer3": { "result": false, "value": "Велоцераптор" }
-            "answer4": { "result": false, "value": "Абу" }
+            "answer2": { "result": true, "value": "Гена" },
+            "answer3": { "result": false, "value": "Велоцераптор" },
+            "answer4": { "result": false, "value": "Абу" },
             "answer5": { "result": false, "value": "Кеша" }
         },
         {
             "question": "5 + 5",
             "answer1": { "result": false, "value": "1" },
-            "answer2": { "result": true, "value": "10" }
-            "answer3": { "result": false, "value": "15" }
-            "answer4": { "result": false, "value": "20" }
+            "answer2": { "result": true, "value": "10" },
+            "answer3": { "result": false, "value": "15" },
+            "answer4": { "result": false, "value": "20" },
             "answer5": { "result": false, "value": "30" }
         },
         {
             "question": "Столица Италии?",
             "answer1": { "result": false, "value": "Ватикан" },
-            "answer2": { "result": true, "value": "Рим" }
-            "answer3": { "result": false, "value": "Москва" }
-            "answer4": { "result": false, "value": "Киев" }
+            "answer2": { "result": true, "value": "Рим" },
+            "answer3": { "result": false, "value": "Москва" },
+            "answer4": { "result": false, "value": "Киев" },
             "answer5": { "result": false, "value": "Минск" }
         },
         {
             "question": "Самый большой океан",
             "answer1": { "result": false, "value": "Атлантический" },
-            "answer2": { "result": true, "value": "Тихий" }
-            "answer3": { "result": false, "value": "Индийский" }
-            "answer4": { "result": false, "value": "Северный Ледовитый" }
+            "answer2": { "result": true, "value": "Тихий" },
+            "answer3": { "result": false, "value": "Индийский" },
+            "answer4": { "result": false, "value": "Северный Ледовитый" },
             "answer5": { "result": false, "value": "Южный" }
         },
         {
             "question": "На каком материке нет рек?",
             "answer1": { "result": false, "value": "Евразия" },
-            "answer2": { "result": true, "value": "Антарктида" }
-            "answer3": { "result": false, "value": "Африка" }
-            "answer4": { "result": false, "value": "Австралия" }
+            "answer2": { "result": true, "value": "Антарктида" },
+            "answer3": { "result": false, "value": "Африка" },
+            "answer4": { "result": false, "value": "Австралия" },
             "answer5": { "result": false, "value": "Южная Америка" }
         },
         {
             "question": "Самое глубокое озеро",
             "answer1": { "result": false, "value": "Гурон" },
-            "answer2": { "result": true, "value": "Байкал" }
-            "answer3": { "result": false, "value": "Ладожское" }
-            "answer4": { "result": false, "value": "Мичиган" }
+            "answer2": { "result": true, "value": "Байкал" },
+            "answer3": { "result": false, "value": "Ладожское" },
+            "answer4": { "result": false, "value": "Мичиган" },
             "answer5": { "result": false, "value": "Онтарио" }
         },
         {
             "question": "Как переводится фраза "Акуна Матата"?",
             "answer1": { "result": true, "value": "Без забот" },
-            "answer2": { "result": false, "value": "Не сдавайся" }
-            "answer3": { "result": false, "value": "Забудь о прошлом" }
-            "answer4": { "result": false, "value": "Не унывай" }
+            "answer2": { "result": false, "value": "Не сдавайся" },
+            "answer3": { "result": false, "value": "Забудь о прошлом" },
+            "answer4": { "result": false, "value": "Не унывай" },
             "answer5": { "result": false, "value": "Будь сильнее" }
         },
         {
             "question": "Во кого преваращается Джафар во время схватки с Аладдином?",
             "answer1": { "result": true, "value": "Змея" },
-            "answer2": { "result": false, "value": "Дракона" }
-            "answer3": { "result": false, "value": "Скорпиона" }
-            "answer4": { "result": false, "value": "Великана" }
+            "answer2": { "result": false, "value": "Дракона" },
+            "answer3": { "result": false, "value": "Скорпиона" },
+            "answer4": { "result": false, "value": "Великана" },
             "answer5": { "result": false, "value": "Крокодила" }
         },
         {
             "question": "Кто является лучшим другом Гуфи?",
             "answer1": { "result": true, "value": "Дональд Дак" },
-            "answer2": { "result": false, "value": "Микки Маус" }
-            "answer3": { "result": false, "value": "Чёрный плащ" }
-            "answer4": { "result": false, "value": "Плуто" }
+            "answer2": { "result": false, "value": "Микки Маус" },
+            "answer3": { "result": false, "value": "Чёрный плащ" },
+            "answer4": { "result": false, "value": "Плуто" },
             "answer5": { "result": false, "value": "Инспектор Гаджет" }
         },
         {
             "question": "Какого бизнеса не было у Скруджа МакДака?",
             "answer1": { "result": true, "value": "IT компания" },
-            "answer2": { "result": false, "value": "Нефтяная компания" }
-            "answer3": { "result": false, "value": "Морской флот" }
-            "answer4": { "result": false, "value": "Кондитерская фабрика" }
+            "answer2": { "result": false, "value": "Нефтяная компания" },
+            "answer3": { "result": false, "value": "Морской флот" },
+            "answer4": { "result": false, "value": "Кондитерская фабрика" },
             "answer5": { "result": false, "value": "Промышленные предприятия" }
         },
         {
             "question": "К какому виду животных относится Тимон?",
             "answer1": { "result": true, "value": "Сурикат" },
-            "answer2": { "result": false, "value": "Тушканчик" }
-            "answer3": { "result": false, "value": "Мангуст" }
-            "answer4": { "result": false, "value": "Хомяк" }
+            "answer2": { "result": false, "value": "Тушканчик" },
+            "answer3": { "result": false, "value": "Мангуст" },
+            "answer4": { "result": false, "value": "Хомяк" },
             "answer5": { "result": false, "value": "Хорёк" }
         },
         {
             "question": "Сколько игроков в футбольной команде?",
             "answer1": { "result": true, "value": "11" },
-            "answer2": { "result": false, "value": "9" }
-            "answer3": { "result": false, "value": "10" }
-            "answer4": { "result": false, "value": "12" }
+            "answer2": { "result": false, "value": "9" },
+            "answer3": { "result": false, "value": "10" },
+            "answer4": { "result": false, "value": "12" },
             "answer5": { "result": false, "value": "13" }
         },
         {
             "question": "Ближайшая к Солнцу планета",
             "answer1": { "result": true, "value": "Меркурий" },
-            "answer2": { "result": false, "value": "Марс" }
-            "answer3": { "result": false, "value": "Земля" }
-            "answer4": { "result": false, "value": "Венера" }
+            "answer2": { "result": false, "value": "Марс" },
+            "answer3": { "result": false, "value": "Земля" },
+            "answer4": { "result": false, "value": "Венера" },
             "answer5": { "result": false, "value": "Уран" }
         },
         {
             "question": "В високосном году изменяется количество дней в...",
             "answer1": { "result": true, "value": "Феврале" },
-            "answer2": { "result": false, "value": "Январе" }
-            "answer3": { "result": false, "value": "Марте" }
-            "answer4": { "result": false, "value": "Апреле" }
+            "answer2": { "result": false, "value": "Январе" },
+            "answer3": { "result": false, "value": "Марте" },
+            "answer4": { "result": false, "value": "Апреле" },
             "answer5": { "result": false, "value": "Мае" }
         },
         {
             "question": "Ближайшая к Солнцу планета",
             "answer1": { "result": true, "value": "Меркурий" },
-            "answer2": { "result": false, "value": "Марс" }
-            "answer3": { "result": false, "value": "Земля" }
-            "answer4": { "result": false, "value": "Венера" }
+            "answer2": { "result": false, "value": "Марс" },
+            "answer3": { "result": false, "value": "Земля" },
+            "answer4": { "result": false, "value": "Венера" },
             "answer5": { "result": false, "value": "Уран" }
         },
         {
             "question": "Длина экватора",
             "answer1": { "result": true, "value": "40'000км" },
-            "answer2": { "result": false, "value": "12'000км" }
-            "answer3": { "result": false, "value": "24'000км" }
-            "answer4": { "result": false, "value": "30'000км" }
+            "answer2": { "result": false, "value": "12'000км" },
+            "answer3": { "result": false, "value": "24'000км" },
+            "answer4": { "result": false, "value": "30'000км" },
             "answer5": { "result": false, "value": "42'000км" }
         },
         {
@@ -221,9 +221,9 @@ const tasks = `
         {
             "question": "Пчёлы водятся на всех континентах, кроме одного",
             "answer1": { "result": false, "value": "Евразия" },
-            "answer2": { "result": true, "value": "Антарктида" }
-            "answer3": { "result": false, "value": "Африка" }
-            "answer4": { "result": false, "value": "Австралия" }
+            "answer2": { "result": true, "value": "Антарктида" },
+            "answer3": { "result": false, "value": "Африка" },
+            "answer4": { "result": false, "value": "Австралия" },
             "answer5": { "result": false, "value": "Южная Америка" }
         },
         {
@@ -245,17 +245,17 @@ const tasks = `
         {
             "question": "Единственный континент в мире, где живут жирафы",
             "answer1": { "result": false, "value": "Евразия" },
-            "answer2": { "result": true, "value": "Африка" }
-            "answer3": { "result": false, "value": "Антарктида" }
-            "answer4": { "result": false, "value": "Австралия" }
+            "answer2": { "result": true, "value": "Африка" },
+            "answer3": { "result": false, "value": "Антарктида" },
+            "answer4": { "result": false, "value": "Австралия" },
             "answer5": { "result": false, "value": "Южная Америка" }
         },
         {
             "question": "Пчёлы водятся на всех континентах, кроме одного",
             "answer1": { "result": false, "value": "Евразия" },
-            "answer2": { "result": true, "value": "Антарктида" }
-            "answer3": { "result": false, "value": "Африка" }
-            "answer4": { "result": false, "value": "Австралия" }
+            "answer2": { "result": true, "value": "Антарктида" },
+            "answer3": { "result": false, "value": "Африка" },
+            "answer4": { "result": false, "value": "Австралия" },
             "answer5": { "result": false, "value": "Южная Америка" }
         },
         {

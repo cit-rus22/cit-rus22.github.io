@@ -26,6 +26,7 @@ window.onload = function () {
             i--;
             if (i > -1) {
                 countdownToStart();
+                document.getElementById('button_start').style.visibility = "hidden";
             }
             else {
                 document.getElementById('isGame').style.visibility = "visible";

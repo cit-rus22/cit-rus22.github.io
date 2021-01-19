@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>ТикТакБум</title>
     <!--- <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"> --->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
+
 <body>
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col col-md-8 offset-md-2">
-            <div class="row">
-                <h1>Тик-так-бум</h1>
-            </div>
-            <div class="row">
-                <p>Введите количество игроков: <input type="number" id="playerNumber" min="1" max="4" value="2"></p>
-            </div>
-            <div class="row">
-                <div id="button_start" class="btn btn-primary">Начать игру</div>
-            </div>
-            <div>
-                <div class="row" id="countdown"><!-- script.js -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col col-md-8 offset-md-2">
+                <div class="row huh">
+                    <div class="col col-md-5 offset-md-4">
+                        <h1>Тик-так-бум</h1>
+                    </div>
                 </div>
-            </div>
-            <div id="isGame">
-            <div class="row">
-                <span class="alert alert-primary" id="gameStatusField">Игра идёт</span>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="timer-output-wrapper">
-                        <div class="timer-output" id="timerField">
-                            00:00
+                <div class="row">
+                    <div class="col col-md-6 offset-md-4">
+                        <p>Введите количество игроков: <input type="number" id="playerNumber" min="1" max="4" value="2"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 offset-md-4">
+                        <button id="button_start" class="btn btn-success">Начать игру</button>
+                        <button id="button_end" class="btn btn-danger">Конец игры</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col col-md-5 offset-md-5" id="countdown">
+
+                        </div>
+                        <!-- script.js -->
+                    </div>
+                </div>
+                <div id="isGame">
+                    <div class="row">
+                        <div class="col col-md-5 offset-md-5 gameGo">
+                            <span class="alert alert-primary" id="gameStatusField">Игра идёт.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-5 offset-md-3">
+                            <div class="timer-output-wrapper">
+                                <div class="timer-output" id="timerField">
+                                    00:00
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="main_field">
+                        <div class="row row-1">
+                            <h3 id="questionField"></h3>
+                        </div>
+                        <div class="row row-2">
+                            <div id="answer1" class="btn btn-danger form-control text-left answer"></div>
+                        </div>
+                        <div class="row row-3">
+                            <div id="answer2" class="btn btn-warning form-control text-left answer"></div>
+                        </div>
+                        <div class="row row-4">
+                            <div id="answer3" class="btn btn-danger form-control text-left answer"></div>
+                        </div>
+                        <div class="row row-5">
+                            <div id="answer4" class="btn btn-warning form-control text-left answer"></div>
+                        </div>
+                        <div class="row row-6">
+                            <div id="answer5" class="btn btn-danger form-control text-left answer"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <h3 id="questionField"></h3>
-            </div>
-            <div class="row">
-                <div id="answer1" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer2" class="btn btn-danger form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer3" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer4" class="btn btn-danger form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer5" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            </div>
         </div>
     </div>
-</div>
-</div>
 
-<script src="js/utils.js"></script>
-<script src="js/tikTakBoom.js"></script>
-<script src="js/tikTakBoomTasks.js"></script>
-<script src="js/script.js"></script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/tikTakBoom.js"></script>
+    <script src="js/tikTakBoomTasks.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

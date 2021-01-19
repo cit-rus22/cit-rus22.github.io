@@ -11,7 +11,11 @@ window.onload = function()
         document.getElementById('answer4'),
         document.getElementById('answer5'),
     )
+
+    document.getElementById('isGame').style.visibility = "hidden";
+
     document.getElementById('button_start').addEventListener('click', () => {
+        document.getElementById('isGame').style.visibility = "visible";
         tikTakBoom.run();
     })
 };

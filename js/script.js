@@ -11,5 +11,8 @@ window.onload = function()
         document.getElementById('answer4'),
         document.getElementById('answer5'),
     )
-    tikTakBoom.run();
+    document.getElementById('button_start').addEventListener('click', () => {
+        tikTakBoom.run();
+    })
 };
+

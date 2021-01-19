@@ -102,6 +102,7 @@ tikTakBoom = {
     },
 
     timer() {
+        setInterval(3000);
         if (this.state) {
             this.boomTimer -= 1;
             let sec = this.boomTimer % 60;

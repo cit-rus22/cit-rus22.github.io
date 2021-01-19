@@ -14,9 +14,30 @@ window.onload = function()
 
     document.getElementById('isGame').style.visibility = "hidden";
 
+        var i = 3;
+        function countdownToStart() {
+        setTimeout(() => {
+            console.log(i);
+            i--;
+            if ( i > -1 ) {
+                countdownToStart();
+            }
+            else {
+                document.getElementById('isGame').style.visibility = "visible";
+                tikTakBoom.run();
+            }
+        }, 1000);
+    }
+
     document.getElementById('button_start').addEventListener('click', () => {
-        document.getElementById('isGame').style.visibility = "visible";
-        tikTakBoom.run();
+        countdownToStart();
     })
+
+    //function buttonStart () {
+    //    document.getElementById('button_start').addEventListener('click', () => {
+    //    document.getElementById('isGame').style.visibility = "visible";
+    //    setTimeout(() => tikTakBoom.run(), 0);
+    //})
+    //}
 };
 

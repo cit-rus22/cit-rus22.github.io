@@ -26,7 +26,12 @@ tikTakBoom = {
         this.needRightAnswers = 3;
     },
 
+    delayRun() {
+        window.setTimeout(run, 3000)
+    },
+
     run() {
+
         this.state = 1;
 
         this.rightAnswers = 0;
@@ -102,7 +107,6 @@ tikTakBoom = {
     },
 
     timer() {
-        setInterval(3000);
         if (this.state) {
             this.boomTimer -= 1;
             let sec = this.boomTimer % 60;

@@ -1,8 +1,13 @@
 body {
     font-family: 'PT Mono', monospace;
+    background-color: rgb(255, 231, 188);
 }
 
-.timer-output{
+.container {
+    width: 1200px;
+}
+
+.timer-output {
     width: 200px;
     background: #222;
     color: darkred;
@@ -13,7 +18,7 @@ body {
     user-select: none;
 }
 
-.timer-output-wrapper{
+.timer-output-wrapper {
     width: calc(100% - 24px);
     display: flex;
     flex-direction: row;
@@ -23,5 +28,29 @@ body {
 }
 
 .row {
-    margin-top: 5px;
+    margin: 5px;
+    width: 850px;
+}
+
+#timerField {
+    color: rgb(255, 0, 0);
+    border-radius: 50%;
+    border: 15px white;
+    margin-left: 80px;
+}
+
+#countdown {
+    font-size: 30px;
+    font-weight: 800;
+    color: red;
+    margin-top: 10px;
+}
+
+.gameGo {
+    margin-left: 270px;
+}
+
+#gameStatusField {
+    display: block;
+    text-align: center;
 }

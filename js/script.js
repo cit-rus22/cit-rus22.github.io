@@ -1,5 +1,4 @@
-window.onload = function()
-{
+window.onload = function () {
     tikTakBoom.init(
         tasks,
         document.getElementById('timerField'),
@@ -14,12 +13,18 @@ window.onload = function()
 
     document.getElementById('isGame').style.visibility = "hidden";
 
-        var i = 3;
-        function countdownToStart() {
+    // Для функции-счётчика
+    var i = 3;
+
+    // Куда выводить отсчёт
+    var countdownHTML = document.getElementById('countdown');
+
+    // Сама функция отсчёта с отображением скрытого isGame
+    function countdownToStart() {
         setTimeout(() => {
-            console.log(i);
+            countdownHTML.innerHTML += i + '...';
             i--;
-            if ( i > -1 ) {
+            if (i > -1) {
                 countdownToStart();
             }
             else {
@@ -29,6 +34,7 @@ window.onload = function()
         }, 1000);
     }
 
+    // Запуск игры по нажатию на кнопку Начать игру
     document.getElementById('button_start').addEventListener('click', () => {
         countdownToStart();
     })

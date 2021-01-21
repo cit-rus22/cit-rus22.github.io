@@ -14,7 +14,7 @@ window.onload = function() {
     document.getElementById('isGame').style.visibility = "hidden";
     document.getElementById('button_end').style.visibility = "hidden";
     // Для функции-счётчика
-    var i = 3;
+    let i = 3;
 
     // Куда выводить отсчёт
     var countdownHTML = document.getElementById('countdown');
@@ -22,6 +22,11 @@ window.onload = function() {
     // Сама функция отсчёта с отображением скрытого isGame
     function countdownToStart() {
         setTimeout(() => {
+            tikTakBoom.gameStatusField.style.visibility = "hidden";
+
+            tikTakBoom.boomTimer = 30;
+            tikTakBoom.rightAnswers = 0;
+
             countdownHTML.innerHTML += i + '...';
             i--;
             if (i > -1) {
@@ -30,6 +35,8 @@ window.onload = function() {
             } else {
                 document.getElementById('isGame').style.visibility = "visible";
                 document.getElementById('button_end').style.visibility = "visible";
+                document.getElementById('main_field').style.visibility = "visible";
+                tikTakBoom.gameStatusField.style.visibility = "visible";
                 countdownHTML.innerHTML = '';
                 tikTakBoom.run();
             }
@@ -40,8 +47,13 @@ window.onload = function() {
 
     // Запуск игры по нажатию на кнопку Начать игру
     document.getElementById('button_start').addEventListener('click', () => {
+        i = 3;
+        tikTakBoom.gameStatusField.innerText = ``;
+        tikTakBoom.gameStatusField.style.visibility = "hidden";
         countdownToStart();
+
         countdownHTML.innerHTML = "";
+
     })
 
     function stopGame() {

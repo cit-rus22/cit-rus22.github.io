@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     tikTakBoom.init(
         tasks,
         document.getElementById('timerField'),
@@ -12,9 +12,9 @@ window.onload = function () {
     )
 
     document.getElementById('isGame').style.visibility = "hidden";
-
+    document.getElementById('button_end').style.visibility = "hidden";
     // Для функции-счётчика
-    var i = 3;
+    let i = 3;
 
     // Куда выводить отсчёт
     var countdownHTML = document.getElementById('countdown');
@@ -22,22 +22,48 @@ window.onload = function () {
     // Сама функция отсчёта с отображением скрытого isGame
     function countdownToStart() {
         setTimeout(() => {
+            tikTakBoom.gameStatusField.style.visibility = "hidden";
+
+            tikTakBoom.boomTimer = 30;
+            tikTakBoom.rightAnswers = 0;
+
             countdownHTML.innerHTML += i + '...';
             i--;
             if (i > -1) {
                 countdownToStart();
                 document.getElementById('button_start').style.visibility = "hidden";
-            }
-            else {
+            } else {
                 document.getElementById('isGame').style.visibility = "visible";
+                document.getElementById('button_end').style.visibility = "visible";
+                document.getElementById('main_field').style.visibility = "visible";
+                tikTakBoom.gameStatusField.style.visibility = "visible";
+                countdownHTML.innerHTML = '';
                 tikTakBoom.run();
             }
         }, 1000);
+
     }
+
 
     // Запуск игры по нажатию на кнопку Начать игру
     document.getElementById('button_start').addEventListener('click', () => {
+        i = 3;
+        tikTakBoom.gameStatusField.innerText = ``;
+        tikTakBoom.gameStatusField.style.visibility = "hidden";
         countdownToStart();
+
+        countdownHTML.innerHTML = "";
+
+    })
+
+    function stopGame() {
+        document.getElementById('main_field').style.visibility = "hidden";
+        tikTakBoom.finish();
+    }
+
+    //Прекращение игры при нажатии на кнопку "Конец игры"
+    document.getElementById('button_end').addEventListener('click', () => {
+        stopGame();
     })
 
     //function buttonStart () {
@@ -47,4 +73,3 @@ window.onload = function () {
     //})
     //}
 };
-

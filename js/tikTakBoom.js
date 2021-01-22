@@ -6,7 +6,7 @@ tikTakBoom = {
         textFieldQuestion,
         textFieldAnswer1,
         textFieldAnswer2,
-        textFieldAnswer3, 
+        textFieldAnswer3,
         textFieldAnswer4,
         textFieldAnswer5
     ) {
@@ -27,8 +27,23 @@ tikTakBoom = {
     },
 
     delayRun() {
-        window.setTimeout(run, 3000)
+        window.setTimeout(run, 3000);
     },
+
+    /*
+    // Создание таймеров по числу игроков
+    
+    playersCount = this.countOfPlayers;
+    for (let j = 2, j < playersCount, j++) {
+        let timerNth = document.createElement("div");
+        timerNth.innerHTML = "00:00";
+        timerNth.className = `timer_${j}`;
+        document.getElementById("timerField").appendChild(timerNth);
+        let boomTimer_${j} = 30; //???
+        console.log(boomTimer_${j});
+    }
+*/
+
 
     run() {
 
@@ -36,13 +51,14 @@ tikTakBoom = {
 
         this.rightAnswers = 0;
 
+
         this.turnOn();
 
         this.timer();
     },
 
     turnOn() {
-        this.gameStatusField.innerText += ` Вопрос игроку №${this.state}`;
+        this.gameStatusField.innerText += `Вопрос игроку №${this.state}`;
 
         const taskNumber = randomIntNumber(this.tasks.length - 1);
         this.printQuestion(this.tasks[taskNumber]);
@@ -94,16 +110,23 @@ tikTakBoom = {
         this.state = 0;
         if (result === 'lose') {
             this.gameStatusField.innerText = `Вы проиграли!`;
+
         }
         if (result === 'won') {
             this.gameStatusField.innerText = `Вы выиграли!`;
+
         }
 
         this.textFieldQuestion.innerText = ``;
         this.textFieldAnswer1.innerText = ``;
         this.textFieldAnswer2.innerText = ``;
-
+        document.getElementById('main_field').style.visibility = "hidden";
+        document.getElementById('button_start').style.visibility = "visible";
+        document.getElementById('button_end').style.visibility = "hidden";
         console.log(this);
+        //   this.boomTimer = 30;
+        //   this.rightAnswers = 0;
+        //  this.gameStatusField.style.visibility = "hidden";
     },
 
     timer() {

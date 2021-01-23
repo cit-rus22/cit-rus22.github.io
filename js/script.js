@@ -51,7 +51,7 @@ window.onload = function() {
     // Запуск игры по нажатию на кнопку Начать игру
     document.getElementById('button_start').addEventListener('click', () => {
         i = 3;
-        tikTakBoom.gameStatusField.innerText = ``;
+        tikTakBoom.gameStatusField.innerHTML = ``;
         tikTakBoom.gameStatusField.style.visibility = "hidden";
         countdownToStart();
 

@@ -73,7 +73,7 @@ tikTakBoom = {
 
     turnOn() {
 
-        this.gameStatusField.innerText += `Вопрос игроку №${this.state}`;
+        this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
 
         const taskNumber = randomIntNumber(this.tasks.length - 1);
         this.printQuestion(this.tasks[taskNumber]);
@@ -85,10 +85,10 @@ tikTakBoom = {
 
     turnOff(value) {
         if (this.currentTask[value].result) {
-            this.gameStatusField.innerText = 'Верно!';
+            this.gameStatusField.innerHTML = 'Верно!';
             this.rightAnswers += 1;
         } else {
-            this.gameStatusField.innerText = 'Неверно!';
+            this.gameStatusField.innerHTML = 'Неверно!';
         }
         if (this.rightAnswers < this.needRightAnswers) {
             if (this.tasks.length === 0) {
@@ -108,12 +108,12 @@ tikTakBoom = {
     },
 
     printQuestion(task) {
-        this.textFieldQuestion.innerText = task.question;
-        this.textFieldAnswer1.innerText = task.answer1.value;
-        this.textFieldAnswer2.innerText = task.answer2.value;
-        this.textFieldAnswer3.innerText = task.answer3.value;
-        this.textFieldAnswer4.innerText = task.answer4.value;
-        this.textFieldAnswer5.innerText = task.answer5.value;
+        this.textFieldQuestion.innerHTML = task.question;
+        this.textFieldAnswer1.innerHTML = task.answer1.value;
+        this.textFieldAnswer2.innerHTML = task.answer2.value;
+        this.textFieldAnswer3.innerHTML = task.answer3.value;
+        this.textFieldAnswer4.innerHTML = task.answer4.value;
+        this.textFieldAnswer5.innerHTML = task.answer5.value;
 
         this.textFieldAnswer1.addEventListener('click', answer1 = () => this.turnOff('answer1'));
         this.textFieldAnswer2.addEventListener('click', answer2 = () => this.turnOff('answer2'));
@@ -125,27 +125,22 @@ tikTakBoom = {
     },
 
     finish(result = 'lose', player = 'end') {
-        console.log(player + 'pl');
+        //console.log(player + 'pl');
         if (result === 'lose') {
-            if (player === 'end') this.gameStatusField.innerText = `Вы проиграли!`;
-            else this.gameStatusField.innerText = `Игрок ${player} проиграл!`;
-
+            if (player === 'end') this.gameStatusField.innerHTML = `Вы проиграли!`;
+            else this.gameStatusField.innerHTML = `Игрок ${player} проиграл!`;
         }
+
         if (result === 'won') {
-            this.gameStatusField.innerText = `Игрок ${player} выиграл!`;
-
+            this.gameStatusField.innerHTML = `Игрок ${player} выиграл!`;
         }
 
-        this.textFieldQuestion.innerText = ``;
-        this.textFieldAnswer1.innerText = ``;
-        this.textFieldAnswer2.innerText = ``;
+        this.textFieldQuestion.innerHTML = ``;
+        this.textFieldAnswer1.innerHTML = ``;
+        this.textFieldAnswer2.innerHTML = ``;
         document.getElementById('main_field').style.visibility = "hidden";
         document.getElementById('button_start').style.visibility = "visible";
         document.getElementById('button_end').style.visibility = "hidden";
-        // console.log(this);
-        //   this.boomTimer = 30;
-        //   this.rightAnswers = 0;
-        //  this.gameStatusField.style.visibility = "hidden";
 
         // Удаление таймеров
         let element = document.getElementById("timers");
@@ -156,7 +151,7 @@ tikTakBoom = {
     },
 
     timer() {
-        // for (j = 0; j < this.countOfPlayers; j++) {
+
         if (this.state == 1) {
             // console.log(timerNth.className);
             this.boomTimer[0] -= 1;
@@ -169,16 +164,21 @@ tikTakBoom = {
             if (this.boomTimer[0] > 0) {
                 setTimeout(
                     () => {
-                        this.timer()
+                        this.timer();
                     },
                     1000,
                 )
             } else {
-                this.finish('lose', this.state);
-                console.log(this.state);
+                this.gameStatusField.innerHTML = `Игрок 1 проиграл!`;
+                this.state += 1;
+                this.timer();
+                //  let d = document.getElementById("timers");
+                //  let d_nested = document.getElementsByClassName("timer_label")[0];
+                //  d.removeChild(d_nested);
+
             }
         }
-        // }
+
         if (this.state == 2) {
 
             this.boomTimer[1] -= 1;
@@ -186,7 +186,7 @@ tikTakBoom = {
             let min = (this.boomTimer[1] - sec) / 60;
             sec = (sec >= 10) ? sec : '0' + sec;
             min = (min >= 10) ? min : '0' + min;
-            this.timerField[1].innerText = `${min}:${sec}`;
+            this.timerField[1].innerHTML = `${min}:${sec}`;
 
             if (this.boomTimer[1] > 0) {
                 setTimeout(
@@ -196,8 +196,13 @@ tikTakBoom = {
                     1000,
                 )
             } else {
-                this.finish('lose', this.state);
-                console.log(this.state);
+                this.gameStatusField.innerHTML = `Игрок 2 проиграл!`;
+                this.state += 1;
+                this.timer();
+                // let d = document.getElementById("timers");
+                // let d_nested = document.getElementsByClassName("timer_label")[0];
+                // d.removeChild(d_nested);
+
             }
         }
 
@@ -208,7 +213,7 @@ tikTakBoom = {
             let min = (this.boomTimer[2] - sec) / 60;
             sec = (sec >= 10) ? sec : '0' + sec;
             min = (min >= 10) ? min : '0' + min;
-            this.timerField[2].innerText = `${min}:${sec}`;
+            this.timerField[2].innerHTML = `${min}:${sec}`;
 
             if (this.boomTimer[2] > 0) {
                 setTimeout(
@@ -218,8 +223,9 @@ tikTakBoom = {
                     1000,
                 )
             } else {
-                this.finish('lose', this.state);
-                console.log(this.state);
+                this.gameStatusField.innerHTML = `Игрок 3 проиграл!`;
+                this.state += 1;
+                this.timer();
             }
         }
 
@@ -240,10 +246,15 @@ tikTakBoom = {
                     1000,
                 )
             } else {
-                this.finish('lose', this.state);
-                console.log(this.state);
+                this.gameStatusField.innerHTML = `Игрок 4 проиграл!`;
+                this.state += 1;
+                this.timer();
             }
         }
 
+        if (this.boomTimer[0] && this.boomTimer[1] && this.boomTimer[2] && this.boomTimer[3] <= 0)
+            this.finish();
+        //  if (this.boomTimer.forEach((timer) => { if (timer <= 0) return true; }))
+        //      this.finish('lose', this.state);
     },
 }

@@ -1,7 +1,9 @@
 window.onload = function() {
     tikTakBoom.init(
         tasks,
-        document.getElementById('timerField'),
+        document.querySelector('#playerNumber').value,
+
+        document.getElementsByClassName('timerField'),
         document.getElementById('gameStatusField'),
         document.getElementById('questionField'),
         document.getElementById('answer1'),
@@ -21,12 +23,13 @@ window.onload = function() {
 
     // Сама функция отсчёта с отображением скрытого isGame
     function countdownToStart() {
+        tikTakBoom.gameStatusField.style.visibility = "hidden";
+        tikTakBoom.state = 1;
+        for (j = 0; j < this.countOfPlayers; j++)
+            tikTakBoom.boomTimer[j] = 30;
+
+        tikTakBoom.rightAnswers = 0;
         setTimeout(() => {
-            tikTakBoom.gameStatusField.style.visibility = "hidden";
-
-            tikTakBoom.boomTimer = 30;
-            tikTakBoom.rightAnswers = 0;
-
             countdownHTML.innerHTML += i + '...';
             i--;
             if (i > -1) {
@@ -66,10 +69,4 @@ window.onload = function() {
         stopGame();
     })
 
-    //function buttonStart () {
-    //    document.getElementById('button_start').addEventListener('click', () => {
-    //    document.getElementById('isGame').style.visibility = "visible";
-    //    setTimeout(() => tikTakBoom.run(), 0);
-    //})
-    //}
 };

@@ -57,8 +57,12 @@ tikTakBoom = {
         this.rightAnswers = [0, 0, 0, 0];
 
         this.turnOn();
-
         this.createTimers();
+
+        // Массив для отметки проигравших игроков, 1 - игрок проиграл, 0 - игрок еще в игре
+        this.fail = [0, 0, 0, 0];
+        // Ограничиваем длину этого массива по числу игроков
+        this.fail.length = this.countOfPlayers;
 
         this.timer();
     },
@@ -73,6 +77,9 @@ tikTakBoom = {
         this.tasks.splice(taskNumber, 1);
         //  if (this.state == fail) this.state += 1;
         //  else
+
+
+
     },
 
     turnOff(value) {
@@ -150,6 +157,10 @@ tikTakBoom = {
 
     timer() {
 
+        if (this.fail.every(el => el > 0))
+            this.finish();
+
+        console.log(this.fail);
 
         if (this.state == 1) {
 
@@ -169,9 +180,18 @@ tikTakBoom = {
                 )
             } else {
                 this.gameStatusField.innerHTML = `Игрок 1 проиграл!`;
+                this.fail[0] = 1;
 
-                this.state += 1;
+                if (this.state == this.countOfPlayers) {
+                    this.state = 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                    this.timer();
+                } else {
+                    this.state += 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                }
 
+                console.log(this.state);
                 //        var description = document.getElementsByClassName("timer_label")[0];
                 //      description.parentNode.removeChild(description);
                 //  this.timer();
@@ -196,8 +216,18 @@ tikTakBoom = {
                 )
             } else {
                 this.gameStatusField.innerHTML = `Игрок 2 проиграл!`;
-                this.state += 1;
+                this.fail[1] = 1;
 
+                if (this.state == this.countOfPlayers) {
+                    this.state = 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                    this.timer();
+                } else {
+                    this.state += 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                }
+
+                console.log(this.state);
                 //   var description = document.getElementsByClassName("timer_label")[1];
                 // description.parentNode.removeChild(description);
                 // this.timer();
@@ -222,8 +252,18 @@ tikTakBoom = {
                 )
             } else {
                 this.gameStatusField.innerHTML = `Игрок 3 проиграл!`;
-                this.state += 1;
+                this.fail[2] = 1;
 
+                if (this.state == this.countOfPlayers) {
+                    this.state = 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                    this.timer();
+                } else {
+                    this.state += 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                }
+
+                console.log(this.state);
                 //      var description = document.getElementsByClassName("timer_label")[2];
                 //    description.parentNode.removeChild(description);
                 //this.timer();
@@ -248,13 +288,20 @@ tikTakBoom = {
                 )
             } else {
                 this.gameStatusField.innerHTML = `Игрок 4 проиграл!`;
-                this.state += 1;
-                this.turnOn();
+                this.fail[3] = 1;
+
+                if (this.state == this.countOfPlayers) {
+                    this.state = 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                    this.timer();
+                } else {
+                    this.state += 1;
+                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                }
             }
         }
-        console.log('5 ' + this.state);
-        if (this.boomTimer[0] && this.boomTimer[1] && this.boomTimer[2] && this.boomTimer[3] <= 0)
-            this.finish();
+
+
         //  if (this.boomTimer.forEach((timer) => { if (timer <= 0) return true; }))
         //      this.finish('lose', this.state);
     },

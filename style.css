@@ -55,3 +55,26 @@ body {
     color: red;
     margin-right: 20px;
 }
+
+
+/*
+#button_ownTime {
+    width: 245px;
+}
+
+#button_ownTime:checked {
+    background-color: lawngreen;
+}
+*/
+
+#button_ownTime {
+    width: 245px;
+}
+
+#ownTime:checked~#button_ownTime {
+    background: #e22a2a;
+}
+
+#ownTime {
+    display: none;
+}

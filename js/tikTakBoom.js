@@ -31,64 +31,78 @@ tikTakBoom = {
         window.setTimeout(run, 3000);
     },
 
-    createTimers() {
+    createTimers(singlePlayer = 1) {
         // Создание таймеров по числу игроков
         const playerNumber = document.querySelector('#playerNumber').value;
         this.countOfPlayers = playerNumber;
 
-        for (j = 0; j < this.countOfPlayers; j++) {
-
-            let timer_label = document.createElement("label");
-            timer_label.innerHTML = 'Игрок_' + (j + 1);
-            timer_label.className = "timer_label";
-            document.getElementById("timers").appendChild(timer_label);
+        if (singlePlayer == 'true') {
             let timerNth = document.createElement("div");
             timerNth.innerHTML = "00:30";
-            timerNth.className = `timer-output timerField timer_${j}`;
-            document.getElementsByClassName("timer_label")[j].appendChild(timerNth);
-            this.boomTimer[j] = 10;
-            // console.log(timerNth.className);
-        };
+            timerNth.className = `timer-output timerField timer_0`;
+            document.getElementById("timers").appendChild(timerNth);
+            this.boomTimer[0] = 10;
+        } else {
+            for (j = 0; j < this.countOfPlayers; j++) {
+
+                let timer_label = document.createElement("label");
+                timer_label.innerHTML = 'Игрок_' + (j + 1);
+                timer_label.className = "timer_label";
+                document.getElementById("timers").appendChild(timer_label);
+                let timerNth = document.createElement("div");
+                timerNth.innerHTML = "00:30";
+                timerNth.className = `timer-output timerField timer_${j}`;
+                document.getElementsByClassName("timer_label")[j].appendChild(timerNth);
+                this.boomTimer[j] = 10;
+            }
+        }
     },
 
-    run() {
+    run(singlePlayer = 1) {
 
         this.state = 1;
         this.rightAnswers = [0, 0, 0, 0];
-
-        this.turnOn();
-        this.createTimers();
-
         // Массив для отметки проигравших игроков, 1 - игрок проиграл, 0 - игрок еще в игре
         this.fail = [0, 0, 0, 0];
+        this.turnOn();
+        this.createTimers(singlePlayer);
+
+
         // Ограничиваем длину этого массива по числу игроков
         this.fail.length = this.countOfPlayers;
 
-        this.timer();
+        this.timer(singlePlayer);
     },
 
     turnOn() {
+
         this.state = (this.state == this.countOfPlayers) ? 1 : this.state += 1;
+        let i = 0;
+        i = this.state - 1;
+
+        // Пропуск номера вопроса для выбывших игроков, у которых истекло время
+        if (this.fail[i] == 1) {
+            this.state = (this.state == this.countOfPlayers) ? 1 : this.state += 1;
+            if (i + 1 > this.countOfPlayers - 1) i = i - this.countOfPlayers;
+            if (this.fail[i + 1] == 1) {
+                this.state = (this.state == this.countOfPlayers) ? 1 : this.state += 1;
+                if (i + 2 > this.countOfPlayers - 1) i = i - this.countOfPlayers;
+                if (this.fail[i + 1] == 1) this.state = (this.state == this.countOfPlayers) ? 1 : this.state += 1;
+            }
+        }
 
         this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
 
         const taskNumber = randomIntNumber(this.tasks.length - 1);
         this.printQuestion(this.tasks[taskNumber]);
         this.tasks.splice(taskNumber, 1);
-        //  if (this.state == fail) this.state += 1;
-        //  else
-
-
-
     },
 
     turnOff(value) {
 
         if (this.currentTask[value].result) {
             this.gameStatusField.innerHTML = 'Верно!';
-
             this.rightAnswers[this.state - 1] += 1;
-            //console.log(this.rightAnswers);
         } else {
             this.gameStatusField.innerHTML = 'Неверно!';
         }
@@ -147,6 +161,7 @@ tikTakBoom = {
         document.getElementById('main_field').style.visibility = "hidden";
         document.getElementById('button_start').style.visibility = "visible";
         document.getElementById('button_end').style.visibility = "hidden";
+        document.getElementById('button_ownTime').style.visibility = "visible";
 
         // Удаление всех таймеров
         let element = document.getElementById("timers");
@@ -155,154 +170,151 @@ tikTakBoom = {
         }
     },
 
-    timer() {
+    timer(singlePlayer = 1) {
+        if (singlePlayer == 'true') {
+            if (this.state) {
+                this.boomTimer[0] -= 1;
+                let sec = this.boomTimer[0] % 60;
+                let min = (this.boomTimer[0] - sec) / 60;
+                sec = (sec >= 10) ? sec : '0' + sec;
+                min = (min >= 10) ? min : '0' + min;
+                this.timerField[0].innerText = `${min}:${sec}`;
 
-        if (this.fail.every(el => el > 0))
-            this.finish();
-
-        console.log(this.fail);
-
-        if (this.state == 1) {
-
-            this.boomTimer[0] -= 1;
-            let sec = this.boomTimer[0] % 60;
-            let min = (this.boomTimer[0] - sec) / 60;
-            sec = (sec >= 10) ? sec : '0' + sec;
-            min = (min >= 10) ? min : '0' + min;
-            this.timerField[0].innerText = `${min}:${sec}`;
-
-            if (this.boomTimer[0] > 0) {
-                setTimeout(
-                    () => {
-                        this.timer();
-                    },
-                    1000,
-                )
-            } else {
-                this.gameStatusField.innerHTML = `Игрок 1 проиграл!`;
-                this.fail[0] = 1;
-
-                if (this.state == this.countOfPlayers) {
-                    this.state = 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                    this.timer();
+                if (this.boomTimer[0] > 0) {
+                    setTimeout(
+                        () => {
+                            this.timer('true');
+                        },
+                        1000,
+                    )
                 } else {
-                    this.state += 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                }
-
-                console.log(this.state);
-                //        var description = document.getElementsByClassName("timer_label")[0];
-                //      description.parentNode.removeChild(description);
-                //  this.timer();
-            }
-        }
-
-        if (this.state == 2) {
-
-            this.boomTimer[1] -= 1;
-            let sec = this.boomTimer[1] % 60;
-            let min = (this.boomTimer[1] - sec) / 60;
-            sec = (sec >= 10) ? sec : '0' + sec;
-            min = (min >= 10) ? min : '0' + min;
-            this.timerField[1].innerHTML = `${min}:${sec}`;
-
-            if (this.boomTimer[1] > 0) {
-                setTimeout(
-                    () => {
-                        this.timer()
-                    },
-                    1000,
-                )
-            } else {
-                this.gameStatusField.innerHTML = `Игрок 2 проиграл!`;
-                this.fail[1] = 1;
-
-                if (this.state == this.countOfPlayers) {
-                    this.state = 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                    this.timer();
-                } else {
-                    this.state += 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                }
-
-                console.log(this.state);
-                //   var description = document.getElementsByClassName("timer_label")[1];
-                // description.parentNode.removeChild(description);
-                // this.timer();
-            }
-        }
-
-        if (this.state == 3) {
-
-            this.boomTimer[2] -= 1;
-            let sec = this.boomTimer[2] % 60;
-            let min = (this.boomTimer[2] - sec) / 60;
-            sec = (sec >= 10) ? sec : '0' + sec;
-            min = (min >= 10) ? min : '0' + min;
-            this.timerField[2].innerHTML = `${min}:${sec}`;
-
-            if (this.boomTimer[2] > 0) {
-                setTimeout(
-                    () => {
-                        this.timer()
-                    },
-                    1000,
-                )
-            } else {
-                this.gameStatusField.innerHTML = `Игрок 3 проиграл!`;
-                this.fail[2] = 1;
-
-                if (this.state == this.countOfPlayers) {
-                    this.state = 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                    this.timer();
-                } else {
-                    this.state += 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                }
-
-                console.log(this.state);
-                //      var description = document.getElementsByClassName("timer_label")[2];
-                //    description.parentNode.removeChild(description);
-                //this.timer();
-            }
-        }
-
-        if (this.state == 4) {
-
-            this.boomTimer[3] -= 1;
-            let sec = this.boomTimer[3] % 60;
-            let min = (this.boomTimer[3] - sec) / 60;
-            sec = (sec >= 10) ? sec : '0' + sec;
-            min = (min >= 10) ? min : '0' + min;
-            this.timerField[3].innerText = `${min}:${sec}`;
-
-            if (this.boomTimer[3] > 0) {
-                setTimeout(
-                    () => {
-                        this.timer()
-                    },
-                    1000,
-                )
-            } else {
-                this.gameStatusField.innerHTML = `Игрок 4 проиграл!`;
-                this.fail[3] = 1;
-
-                if (this.state == this.countOfPlayers) {
-                    this.state = 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
-                    this.timer();
-                } else {
-                    this.state += 1;
-                    this.gameStatusField.innerHTML += `Вопрос игроку №${this.state}`;
+                    this.finish('lose');
                 }
             }
+        } else {
+            if (this.fail.every(el => el > 0)) {
+                this.finish();
+            } else {
+                if (this.state == 1) {
+                    if (this.fail[0] == 0) {
+                        this.boomTimer[0] -= 1;
+                        let sec = this.boomTimer[0] % 60;
+                        let min = (this.boomTimer[0] - sec) / 60;
+                        sec = (sec >= 10) ? sec : '0' + sec;
+                        min = (min >= 10) ? min : '0' + min;
+                        this.timerField[0].innerText = `${min}:${sec}`;
+                    }
+                    if (this.boomTimer[0] > 0) {
+                        setTimeout(
+                            () => {
+                                this.timer(0);
+                            },
+                            1000,
+                        )
+                    } else {
+                        this.fail[0] = 1;
+
+                        if (this.state == this.countOfPlayers) {
+                            this.state = 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.countOfPlayers} проиграл! Вопрос игроку №${this.state}`;
+                            this.timer(0);
+                        } else {
+                            this.state += 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.state-1} проиграл! Вопрос игроку №${this.state}`;
+                        }
+                    }
+                }
+
+                if (this.state == 2) {
+                    if (this.fail[1] == 0) {
+                        this.boomTimer[1] -= 1;
+                        let sec = this.boomTimer[1] % 60;
+                        let min = (this.boomTimer[1] - sec) / 60;
+                        sec = (sec >= 10) ? sec : '0' + sec;
+                        min = (min >= 10) ? min : '0' + min;
+                        this.timerField[1].innerHTML = `${min}:${sec}`;
+                    }
+                    if (this.boomTimer[1] > 0) {
+                        setTimeout(
+                            () => {
+                                this.timer(0);
+                            },
+                            1000,
+                        )
+                    } else {
+                        this.fail[1] = 1;
+
+                        if (this.state == this.countOfPlayers) {
+                            this.state = 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.countOfPlayers} проиграл! Вопрос игроку №${this.state}`;
+                            this.timer(0);
+                        } else {
+                            this.state += 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.state-1} проиграл! Вопрос игроку №${this.state}`;
+                        }
+                    }
+                }
+
+                if (this.state == 3) {
+                    if (this.fail[2] == 0) {
+                        this.boomTimer[2] -= 1;
+                        let sec = this.boomTimer[2] % 60;
+                        let min = (this.boomTimer[2] - sec) / 60;
+                        sec = (sec >= 10) ? sec : '0' + sec;
+                        min = (min >= 10) ? min : '0' + min;
+                        this.timerField[2].innerHTML = `${min}:${sec}`;
+                    }
+                    if (this.boomTimer[2] > 0) {
+                        setTimeout(
+                            () => {
+                                this.timer(0);
+                            },
+                            1000,
+                        )
+                    } else {
+                        this.fail[2] = 1;
+
+                        if (this.state == this.countOfPlayers) {
+                            this.state = 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.countOfPlayers} проиграл! Вопрос игроку №${this.state}`;
+                            this.timer(0);
+                        } else {
+                            this.state += 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.state-1} проиграл! Вопрос игроку №${this.state}`;
+                        }
+                    }
+                }
+
+                if (this.state == 4) {
+                    if (this.fail[3] == 0) {
+                        this.boomTimer[3] -= 1;
+                        let sec = this.boomTimer[3] % 60;
+                        let min = (this.boomTimer[3] - sec) / 60;
+                        sec = (sec >= 10) ? sec : '0' + sec;
+                        min = (min >= 10) ? min : '0' + min;
+                        this.timerField[3].innerText = `${min}:${sec}`;
+                    }
+                    if (this.boomTimer[3] > 0) {
+                        setTimeout(
+                            () => {
+                                this.timer(0);
+                            },
+                            1000,
+                        )
+                    } else {
+                        this.fail[3] = 1;
+
+                        if (this.state == this.countOfPlayers) {
+                            this.state = 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.countOfPlayers} проиграл! Вопрос игроку №${this.state}`;
+                            this.timer(0);
+                        } else {
+                            this.state += 1;
+                            this.gameStatusField.innerHTML = `Игрок ${this.state-1} проиграл! Вопрос игроку №${this.state}`;
+                        }
+                    }
+                }
+            }
         }
-
-
-        //  if (this.boomTimer.forEach((timer) => { if (timer <= 0) return true; }))
-        //      this.finish('lose', this.state);
     },
 }

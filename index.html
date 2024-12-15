@@ -1,70 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ТикТакБум</title>
-    <!--- <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"> --->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ООО "КТСВ№</title>
+  <style>
+    body {
+      background-image: url('./img/aw-newbannerbg.jpg');
+      background-repeat: repeat;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: green;
+    }
+    h1 {
+      color: green;
+      text-shadow: 2px 2px 5px red;
+    }
+    marquee {
+      color: cyan;
+      font-size: 24px;
+    }
+	    .menu {
+      margin: 20px auto;
+      padding: 10px;
+      display: inline-block;
+      border: 2px solid #888;
+      background-color: #333;
+      border-radius: 10px;
+    }
+    .menu button {
+      background: linear-gradient(to bottom, #fff, #ccc);
+      border: 2px solid #888;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .menu button:hover {
+      background: linear-gradient(to bottom, #eee, #bbb);
+      border-color: #666;
+    }
+	
+	    /* Стиль для ёлочек */
+    .tree {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background-image: url('./img/tree.gif'); /* Укажите путь к изображению ёлочки */
+      background-size: cover;
+      animation: fall linear infinite;
+      z-index: 1000;
+    }
+
+    /* Анимация падения */
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+  
+  
+    <script>
+    // Функция для создания ёлочек
+    function createFallingTree() {
+      const tree = document.createElement('div');
+      tree.classList.add('tree');
+
+      // Случайная позиция и скорость падения
+      tree.style.left = Math.random() * 100 + "vw";
+      tree.style.animationDuration = Math.random() * 5 + 3 + "s";
+
+      document.body.appendChild(tree);
+
+      // Удаляем ёлочку, когда она закончила анимацию
+      tree.addEventListener('animationend', () => {
+        tree.remove();
+      });
+    }
+
+    // Создаём ёлочки каждые 500 мс
+    setInterval(createFallingTree, 500);
+  </script>
+  
+    <script>
+    function showAlert(menuName) {
+      alert(menuName);
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script>
+function PlayMusic() {
+
+  var play=document.getElementById("music");
+  play.play();
+}
+
+$(document).ready(function(){
+  setTimeout(PlayMusic,3000);
+})
+
+</script>
 </head>
 <body>
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col col-md-8 offset-md-2">
-            <div class="row">
-                <h1>Тик-так-бум</h1>
-            </div>
-            <div class="row">
-                <p>Введите количество игроков: <input type="number" id="playerNumber" min="1" max="4" value="2"></p>
-            </div>
-            <div class="row">
-                <div id="button_start" class="btn btn-primary">Начать игру</div>
-            </div>
-            <div>
-                <div class="row" id="countdown"><!-- script.js -->
-                </div>
-            </div>
-            <div id="isGame">
-            <div class="row">
-                <span class="alert alert-primary" id="gameStatusField">Игра идёт</span>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="timer-output-wrapper">
-                        <div class="timer-output" id="timerField">
-                            00:00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <h3 id="questionField"></h3>
-            </div>
-            <div class="row">
-                <div id="answer1" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer2" class="btn btn-danger form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer3" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer4" class="btn btn-danger form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer5" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            </div>
-        </div>
-    </div>
+  <h1 align="center">Добро пожаловать на офицальный сайт ООО "КТСВ"</h1>
+  <marquee>🔥 Лудший провайдер города! 🔥</marquee>
+  <img src="./img/soviet2.gif" alt="Dancing Baby">
+
+
+    <div class="menu" align="center">
+    <button onclick="showAlert('Ту уже сдесь')">Главная</button>
+    <button onclick="showAlert('Запись через Госуслуги в пятницу с 13 до 13:30')">Талоны на Чебурнет</button>
+    <button onclick="showAlert('ZV')">БаZа Zнаний</button>
+    <button onclick="showAlert('Во славу Господа, АМИНЬ!')">Гороскопы</button>
+    <button onclick="showAlert('Кулинарий')">Рецепты</button>
+    <button onclick="showAlert('Слева посмотри')">Погода</button>
+    <button onclick="showAlert('ТОЛЬКО LADA')">АVто</button>
+    <button onclick="showAlert('ТОЛЬКО СБЕРКАССА')">Банки</button>
+    <button onclick="showAlert('НЕ КУПИШЬ')">НедVижимоZть</button>
+  </div>
+  <table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+      <td>-==-
+
+</td>
+      <td>      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px;">
+        <img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		<img src="./img/hello.gif" alt="Анимация" style="width: 100px; height: 50px;">
+		
+      </div></td>
+      <td>-==-</td>
+    </tr>
+	    <tr>
+      <td><div class="sidebar" width:"320px">
+  <h3>Погода</h3>
+  <p>Арзамас: 🌤️ +3°C</p>
+  <p>Первамайск: ☁️ +1°C</p>
+  <p>городетц: ❄️ -10°C</p>
 </div>
+<div class="sidebar" width:"320px">
+  <h3>Шутка дня</h3>
+  <button onclick="showJoke()">Узнать шутку</button>
+  <p id="joke"></p>
+  <script>
+    const jokes = [
+      "Сосед, а ты зачем утром косил газон в трусах? А ты зачем утром смотрел на меня в бинокль?",
+      "Ты зачем в чае ложку оставил? Чтобы найти его потом. Что найти? Настроение пить чай.",
+      "Обновление Windows – лучший способ пойти за кофе."
+    ];
+    function showJoke() {
+      const joke = jokes[Math.floor(Math.random() * jokes.length)];
+      document.getElementById('joke').textContent = joke;
+    }
+  </script>
 </div>
 
-<script src="js/utils.js"></script>
-<script src="js/tikTakBoom.js"></script>
-<script src="js/tikTakBoomTasks.js"></script>
-<script src="js/script.js"></script>
+</td>
+	  
+	  
+	  
+	  
+	  
+      <td>
+<center>
+<div>
+
+<table width="100%" height="20%" border="0" cellpadding="0" cellspacing="0" align="center">
+
+<tr valign="middle" align="center">
+
+<td width="80" valign="middle" align="center" height="20"><img src="./img/c1.gif" width="80" height="80" border="0" alt="Animatsia"></td>
+<td width="80" valign="middle" align="center" height="20"><img src="./img/c2.gif" width="80" height="80" border="0" alt="Animatsia"></td>
+<td width="80" valign="middle" align="center" height="20"><img src="./img/c3.gif" width="80" height="80" border="0" alt="Animatsia"></td>
+<td width="80" valign="middle" align="center" height="20"><img src="./img/c4.gif" width="80" height="80" border="0" alt="Animatsia"></td>
+<td width="80" valign="middle" align="center" height="20"><img src="./img/c1.gif" width="80" height="80" border="0" alt="Animatsia"></td>
+
+</tr>
+</table>
+</center>
+</div>
+<br>
+<center>
+<div>
+
+<table width="100%" height="20%" border="0" cellpadding="0" cellspacing="0" align="center">
+
+<tr valign="middle" align="center">
+
+<td width="80%" valign="center" align="center" height="30"><img src="./img/fire.gif" width="640" height="145" border="0" alt=""></td>
+
+</tr>
+<tr valign="middle" align="center">
+<p>Ближе к   <img src="./img/i.webp" width="100" height="40" border="0" alt="НародУ"></p>
+
+</tr>
+</table>
+</center>
+</div><br>
+
+<div class="content">
+  <h2>Кабельное ТВ "Смотри-не-хочу"</h2>
+  <img src="./img/slepakov.webp" width="343" height="200" border="0" alt="Слепаков нашараша">
+    <p>
+    А вот у меня теперь кабельное ТV. <span class="rainbow">Стошисят каналов! за 400 рублей</span> 
+    Там и ювелирочка, и шоппинг лайф, и бутикЮ, и даже каналы, где целыми днями мужики ловят рыбу. Я рыбу-то вообще не люблю. А вот за <span class="rainbow">400 рублей</span> я бы мог купить 8 литров пива.
+  </p>
+ <!-- 
+  <p>
+   Ну чё, либерахи, закончился ваш YouTube? Не будет больше этих ваших тиктокеров, летсплеев и бесконечных "лайков, подписок, комментариев"?
+  И слава Богу! Хватит тут это самое Зачем вам тот Ютуб, когда есть наш, родной, отечественный RuTube?! Реклама мобилиZации в рекомендациях гарантирована!!11
+Вот вы смотрели раньше, значит, на этих ваших блогеров. А у нас? У нас тоже блогеры есть, но НАШИ. Со своими огородами, самоделками, рыбалкой! Да и фильмы — все свои, российские! Настоящие! А не вот это вот... ваши заграничные размытые картинки. Вот мы смотрели всё детство 16 серий Ну-Погоди, и вы так же должны!
+  </p>
+  <p>
+    А вот у меня теперь кабельное ТВ "Смотри-не-хочу"! <span class="rainbow">300 каналов!</span> 
+    Там и сериалы, и фильмы, и даже каналы, где целыми днями мужики ловят рыбу. Я рыбу-то вообще не люблю, 
+    но <span class="rainbow">смотреть</span>... ну, знаете, иногда даже захватывает. А там ещё есть 
+    <span class="rainbow">кулинарный канал</span> — идеальный фон, пока я ем пельмени.
+  </p>
+  <p>
+    Или хотите спортик посмотреть? 24 часа в сутки гоняют мяч туда-сюда. Я иногда думаю: 
+    "Вот бы они мой <span class="rainbow">пульт</span> нашли, чтобы не искать мне самому".
+  </p>
+  <p>
+    И главное, никаких антенн, которые ты настраиваешь весь день, а вечером только дождь идёт! 
+    Кабель провели, сиди и <span class="rainbow">щёлкай</span>!
+  </p>
+  <p>
+    А знаете, сколько это стоит? <span class="rainbow">Копейки!</span> За 300 каналов! 
+    Я бы вам сказал, что за столько лет своего пива я уже мог купить два таких пакета кабельного!
+  </p>
+  <p><strong>Короче, подключайтесь, не мучайтесь! Сами потом спасибо скажете. А если не скажете, 
+    то я у телевизора и не услышу."</strong></p>
+	--!>
+</div>
+
+<style>
+  /* Эффект переливания цветов */
+  @keyframes rainbow {
+    0% { color: red; }
+    25% { color: orange; }
+    50% { color: yellow; }
+    75% { color: green; }
+    100% { color: blue; }
+  }
+
+  .rainbow {
+    animation: rainbow 3s infinite;
+  }
+</style>
+<img src="./img/soviet.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/empire.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/soviet.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/empire.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/soviet.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/empire.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/soviet.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<img src="./img/empire.gif" alt="Анимация" style="width: 100px; height: 50px;">
+<div class="content">
+  <h2>Чебурнет беZ раZрыVоV</h2>
+    <img src="./img/lozhkinint.jpg" width="343" height="200" border="0" alt="Ложкин">
+  <p>
+    <span class="highlight">хватит это терпеть!</span> Подключай нормальный чебурнет. У нас стабильность как в лучших домах: 
+    пинг низкий, скорости высокие, разрывов — <span class="rainbow">НЕТ.</span> Подчёркиваю: <span class="rainbow">НИ ЕДИНОГО РАЗРЫВА!</span>
+  </p>
+    <p>
+    А если чёт не нравится, то вали в РТ, нам с тобой нипопути.
+  </p>
+      <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+	  <img src="./img/rkn88.jpg" width="100" height="100" border="0" alt="RKN" style="width: 100; animation: shake 0.5s infinite;">
+</div>
+
+<style>
+  .highlight {
+    color: red;
+    font-weight: bold;
+  }
+  .rainbow {
+    animation: rainbow 3s infinite;
+  }
+</style>
+
+<div class="content">
+  <h2>Сервис 24ТВ"</h2>
+  <p>людей посмотревших сойдут с ума</p>
+  <img src="./img/skelcoffin.gif" width="343" height="200" border="0" alt="SKELET">
+    <img src="./img/dosmot.webp" width="343" height="200" border="0" alt="DOSMOT">
+	<p>В нем нету ничего злого, но оно
+пугает. Но после просмотра вы
+почувствуете радость, и в
+дальнейшем всё в вашей жизни
+будет хорошо!
+<br>
+Ваш друг. <p>
+ </div>
+
+</td>
+
+      <td><div style="position: absolute; top: 10px; right: 0; width: 200px; background-color: #ff00ff; padding: 10px; border: 3px dashed #000;">
+  <h3 style="color: yellow; text-align: center; font-size: 16px; font-family: 'Comic Sans MS', cursive;">
+    Купи прямо сейчас!
+  </h3>
+  <img src="./img/dir320.jpg" alt="Мерзкий роутер" style="width: 100%; animation: shake 0.5s infinite;">
+  <p style="color: cyan; font-size: 14px; text-align: center; font-family: 'Comic Sans MS', cursive;">
+    Только сегодня! <br> Самый современный роутер <br> D-Link DIR-320 <br> Всего за <b>5 999 ₽</b>!
+  </p>
+  <marquee behavior="scroll" direction="left" scrollamount="4" style="color: #ffff00; font-size: 12px;">
+    Акция! Звони сейчас! ☎️ 8-800-555-35-35!
+  </marquee>
+  <button 
+    onclick="showAlert('Обращайтесь в торговый центр \"Плыза\"');" 
+    style="display: block; margin: 10px auto; padding: 10px; width: 80%; background-color: #00ff00; color: #000; font-weight: bold; font-size: 14px; border: 2px solid #000; border-radius: 5px; cursor: pointer;">
+    Купить!
+  </button>
+</div>
+
+<!-- Анимация покачивания -->
+<style>
+  @keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+</style>
+
+<!-- Скрипт showAlert -->
+<script>
+  function showAlert(message) {
+    alert(message);
+  }
+</script>
+
+<div class="contacts">
+
+
+
+<audio controls id="music" >
+
+  <source src="./mid/gowest.mp3" type="audio/mpeg">
+</audio>
+<br>
+  <img src="./img/flowers.gif" border="0" alt="Цветочеки">
+  <h2>Как с нами связаться?</h2>
+  <p>
+    Ну... знаете, мы тут, мы всегда где-то рядом. Если хотите, можете написать нам письмо. Или не писать. 
+    Главное — будьте добры, напишите разборчиво! Мы, конечно, постараемся ответить, но вы же понимаете... 
+    Иногда руки не доходят.
+  </p>
+  <p>
+    А если что-то срочное, звоните. Только не по ночам! У нас есть телефон, он звонит. Иногда даже работает.
+  </p>
+  <p>
+    Электронная почта? Конечно, у нас есть. Мы люди современные, так что пользуемся этим... интернетом. 
+    Напишите туда, если хотите. Но лучше всё-таки звоните.
+  </p>
+  <p>
+    Короче, связаться с нами можно. А где наши контакты? Ну вот же они, ниже! Смотрите внимательнее. Или мы вам перезвоним. Может быть.
+  </p>
+  <p>
+  Ттц "ПлЫза"
+</div>
+
+</td>
+	  
+    </tr>
+  </table>
+  
+  <p><img src="./img/afftar.gif" width="100" height="100" border="0" alt="Afftar" style="width: 100; animation: shake 1s infinite;">Заказ поздравлений по телефону шестьписятписят</p>
+  <p>Сайты под ключ</p>
+  <p>Все права защищены</p>
 </body>
 </html>

@@ -315,7 +315,36 @@ $(document).ready(function(){
  </div>
 
 </td>
+<td>
+<div id="advertisement" style="position: absolute; top: 10px; right: 0; width: 200px; background-color: #ff00ff; padding: 10px; border: 3px dashed #000;">
+  <button onclick="closeAd()" style="position: absolute; top: 5px; right: 5px; background: red; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 16px; line-height: 16px;">
+    &times;
+  </button>
+  <h3 style="color: yellow; text-align: center; font-size: 16px;">Купи прямо сейчас!</h3>
+  <img src="./img/dir320.jpg" alt="Мерзкий роутер" style="width: 100%; animation: shake 0.5s infinite;">
+  <p style="color: cyan; font-size: 14px; text-align: center; font-family: 'Comic Sans MS', cursive;">
+    Только сегодня! <br> Самый современный роутер <br> D-Link DIR-320 <br> Всего за <b>5 999 ₽</b>!
+  </p>
+  <marquee behavior="scroll" direction="left" scrollamount="4" style="color: #ffff00; font-size: 12px;">
+    Акция! Звони сейчас! ☎️ 8-800-555-35-35!
+  </marquee>
+  <button onclick="showAlert('Обращайтесь в торговый центр \"Плыза\"');" style="display: block; margin: 10px auto; padding: 10px; width: 80%; background-color: #00ff00; color: #000; font-weight: bold; font-size: 14px; border: 2px solid #000; border-radius: 5px; cursor: pointer;">
+    Купить!
+  </button>
+</div>
 
+<script>
+  function closeAd() {
+    const ad = document.getElementById('advertisement');
+    ad.style.display = 'none'; // Скрываем блок с рекламой
+  }
+
+  function showAlert(message) {
+    alert(message); // Показываем сообщение при нажатии кнопки "Купить"
+  }
+</script>
+
+<!--
       <td><div style="position: absolute; top: 10px; right: 0; width: 200px; background-color: #ff00ff; padding: 10px; border: 3px dashed #000;">
   <h3 style="color: yellow; text-align: center; font-size: 16px; font-family: 'Comic Sans MS', cursive;">
     Купи прямо сейчас!
@@ -332,6 +361,7 @@ $(document).ready(function(){
     style="display: block; margin: 10px auto; padding: 10px; width: 80%; background-color: #00ff00; color: #000; font-weight: bold; font-size: 14px; border: 2px solid #000; border-radius: 5px; cursor: pointer;">
     Купить!
   </button>
+  --!>
 </div>
 
 <!-- Анимация покачивания -->
